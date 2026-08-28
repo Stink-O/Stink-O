@@ -1,17 +1,55 @@
 #!/usr/bin/env python3
-"""Scrape the public contributions calendar (no token needed) into
-data/contributions.json.
+"""Scrape the public contributions calendar into data/contributions.json,
+then add commits made in forks (which GitHub's own graph excludes).
+
+Works unauthenticated; set GITHUB_TOKEN for a higher API rate limit
+(GitHub Actions provides one automatically).
 
 Usage: python scripts/fetch_contributions.py
 """
 import datetime as dt
 import json
+import os
 
 import requests
 from bs4 import BeautifulSoup
 
 USERNAME = "Stink-O"
 URL = f"https://github.com/users/{USERNAME}/contributions"
+API = "https://api.github.com"
+
+
+def api_get(path, **params):
+    headers = {"User-Agent": "profile-art-refresh",
+               "Accept": "application/vnd.github+json"}
+    token = os.environ.get("GITHUB_TOKEN")
+    if token:
+        headers["Authorization"] = f"Bearer {token}"
+    r = requests.get(f"{API}{path}", headers=headers, params=params, timeout=30)
+    r.raise_for_status()
+    return r.json()
+
+
+def fork_commit_dates(since):
+    """Dates of commits authored by USERNAME on the default branch of each
+    fork — the commits GitHub's contribution graph leaves out."""
+    dates = []
+    repos = api_get(f"/users/{USERNAME}/repos", per_page=100, type="owner")
+    for repo in repos:
+        if not repo.get("fork"):
+            continue
+        page = 1
+        while True:
+            commits = api_get(
+                f"/repos/{repo['full_name']}/commits",
+                author=USERNAME, since=since, per_page=100, page=page,
+            )
+            for c in commits:
+                dates.append(c["commit"]["author"]["date"][:10])
+            if len(commits) < 100:
+                break
+            page += 1
+    return dates
 
 
 def main():
@@ -37,6 +75,24 @@ def main():
 
     if not days:
         raise SystemExit("no day cells parsed — GitHub markup may have changed")
+
+    # Fold in fork commits, which GitHub's graph doesn't count
+    fork_days = 0
+    try:
+        for date in fork_commit_dates(since=min(days) + "T00:00:00Z"):
+            if date in days:
+                days[date]["count"] += 1
+                fork_days += 1
+    except requests.RequestException as e:
+        print(f"warning: skipping fork commits ({e})")
+
+    # Recompute levels from merged counts (quartiles of nonzero days)
+    nonzero = sorted(d["count"] for d in days.values() if d["count"] > 0)
+    if nonzero:
+        qs = [nonzero[int(len(nonzero) * q)] for q in (0.25, 0.5, 0.75)]
+        for d in days.values():
+            c = d["count"]
+            d["level"] = 0 if c == 0 else 1 + sum(c > q for q in qs)
 
     ordered = sorted(days)
     counts = [days[d]["count"] for d in ordered]
@@ -71,8 +127,8 @@ def main():
     }
     with open("data/contributions.json", "w") as f:
         json.dump(out, f, indent=1)
-    print(f"{total} contributions across {len(ordered)} days; "
-          f"streak {current} (longest {longest})")
+    print(f"{total} contributions across {len(ordered)} days "
+          f"({fork_days} from forks); streak {current} (longest {longest})")
 
 
 if __name__ == "__main__":

@@ -88,7 +88,7 @@ def main():
     longest = data["longest_streak"]
     out.append(
         f'<text x="{x0}" y="{fy}" fill="{DIM}">'
-        f'<tspan fill="{KEY}">{total}</tspan> contributions in the last year'
+        f'<tspan fill="{KEY}">{total}</tspan> contributions in the last year (forks included)'
         f'<tspan dx="16" fill="{DIM}">|</tspan>'
         f'<tspan dx="16">streak </tspan><tspan fill="{KEY}">{streak}d</tspan>'
         f'<tspan dx="10">(longest {longest}d)</tspan></text>'
