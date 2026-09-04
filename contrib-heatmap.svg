@@ -385,8 +385,9 @@
 <rect class="d" x="878" y="50" width="13" height="13" rx="3" fill="#0e4429" style="animation-delay:0.954s"/>
 <rect class="d" x="878" y="66" width="13" height="13" rx="3" fill="#0e4429" style="animation-delay:0.972s"/>
 <rect class="d" x="878" y="82" width="13" height="13" rx="3" fill="#0e4429" style="animation-delay:0.990s"/>
-<rect class="d" x="878" y="98" width="13" height="13" rx="3" fill="#161b22" style="animation-delay:1.008s"/>
-<text x="46" y="182" fill="#8b949e"><tspan fill="#39d353">293</tspan> contributions in the last year (forks included)<tspan dx="16" fill="#8b949e">|</tspan><tspan dx="16">streak </tspan><tspan fill="#39d353">6d</tspan><tspan dx="10">(longest 6d)</tspan></text>
+<rect class="d" x="878" y="98" width="13" height="13" rx="3" fill="#0e4429" style="animation-delay:1.008s"/>
+<rect class="d" x="878" y="114" width="13" height="13" rx="3" fill="#161b22" style="animation-delay:1.026s"/>
+<text x="46" y="182" fill="#8b949e"><tspan fill="#39d353">294</tspan> contributions in the last year (forks included)<tspan dx="16" fill="#8b949e">|</tspan><tspan dx="16">streak </tspan><tspan fill="#39d353">7d</tspan><tspan dx="10">(longest 7d)</tspan></text>
 <text x="698" y="182" fill="#8b949e">Less</text>
 <rect x="736" y="172" width="13" height="13" rx="3" fill="#161b22"/>
 <rect x="752" y="172" width="13" height="13" rx="3" fill="#0e4429"/>
