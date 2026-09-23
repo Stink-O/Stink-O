@@ -213,7 +213,7 @@
 <rect class="d" x="478" y="98" width="13" height="13" rx="3" fill="#26a641" style="animation-delay:0.558s"/>
 <rect class="d" x="478" y="114" width="13" height="13" rx="3" fill="#26a641" style="animation-delay:0.576s"/>
 <rect class="d" x="478" y="130" width="13" height="13" rx="3" fill="#161b22" style="animation-delay:0.594s"/>
-<rect class="d" x="494" y="34" width="13" height="13" rx="3" fill="#26a641" style="animation-delay:0.504s"/>
+<rect class="d" x="494" y="34" width="13" height="13" rx="3" fill="#39d353" style="animation-delay:0.504s"/>
 <rect class="d" x="494" y="50" width="13" height="13" rx="3" fill="#161b22" style="animation-delay:0.522s"/>
 <rect class="d" x="494" y="66" width="13" height="13" rx="3" fill="#161b22" style="animation-delay:0.540s"/>
 <rect class="d" x="494" y="82" width="13" height="13" rx="3" fill="#161b22" style="animation-delay:0.558s"/>
@@ -269,11 +269,11 @@
 <rect class="d" x="606" y="98" width="13" height="13" rx="3" fill="#0e4429" style="animation-delay:0.702s"/>
 <rect class="d" x="606" y="114" width="13" height="13" rx="3" fill="#39d353" style="animation-delay:0.720s"/>
 <rect class="d" x="606" y="130" width="13" height="13" rx="3" fill="#39d353" style="animation-delay:0.738s"/>
-<rect class="d" x="622" y="34" width="13" height="13" rx="3" fill="#26a641" style="animation-delay:0.648s"/>
+<rect class="d" x="622" y="34" width="13" height="13" rx="3" fill="#39d353" style="animation-delay:0.648s"/>
 <rect class="d" x="622" y="50" width="13" height="13" rx="3" fill="#39d353" style="animation-delay:0.666s"/>
 <rect class="d" x="622" y="66" width="13" height="13" rx="3" fill="#161b22" style="animation-delay:0.684s"/>
 <rect class="d" x="622" y="82" width="13" height="13" rx="3" fill="#161b22" style="animation-delay:0.702s"/>
-<rect class="d" x="622" y="98" width="13" height="13" rx="3" fill="#26a641" style="animation-delay:0.720s"/>
+<rect class="d" x="622" y="98" width="13" height="13" rx="3" fill="#39d353" style="animation-delay:0.720s"/>
 <rect class="d" x="622" y="114" width="13" height="13" rx="3" fill="#26a641" style="animation-delay:0.738s"/>
 <rect class="d" x="622" y="130" width="13" height="13" rx="3" fill="#006d32" style="animation-delay:0.756s"/>
 <rect class="d" x="638" y="34" width="13" height="13" rx="3" fill="#006d32" style="animation-delay:0.666s"/>
@@ -383,8 +383,9 @@
 <rect class="d" x="862" y="130" width="13" height="13" rx="3" fill="#0e4429" style="animation-delay:1.026s"/>
 <rect class="d" x="878" y="34" width="13" height="13" rx="3" fill="#26a641" style="animation-delay:0.936s"/>
 <rect class="d" x="878" y="50" width="13" height="13" rx="3" fill="#0e4429" style="animation-delay:0.954s"/>
-<rect class="d" x="878" y="66" width="13" height="13" rx="3" fill="#161b22" style="animation-delay:0.972s"/>
-<text x="46" y="182" fill="#8b949e"><tspan fill="#39d353">324</tspan> contributions in the last year (forks included)<tspan dx="16" fill="#8b949e">|</tspan><tspan dx="16">streak </tspan><tspan fill="#39d353">25d</tspan><tspan dx="10">(longest 25d)</tspan></text>
+<rect class="d" x="878" y="66" width="13" height="13" rx="3" fill="#0e4429" style="animation-delay:0.972s"/>
+<rect class="d" x="878" y="82" width="13" height="13" rx="3" fill="#161b22" style="animation-delay:0.990s"/>
+<text x="46" y="182" fill="#8b949e"><tspan fill="#39d353">325</tspan> contributions in the last year (forks included)<tspan dx="16" fill="#8b949e">|</tspan><tspan dx="16">streak </tspan><tspan fill="#39d353">26d</tspan><tspan dx="10">(longest 26d)</tspan></text>
 <text x="698" y="182" fill="#8b949e">Less</text>
 <rect x="736" y="172" width="13" height="13" rx="3" fill="#161b22"/>
 <rect x="752" y="172" width="13" height="13" rx="3" fill="#0e4429"/>
