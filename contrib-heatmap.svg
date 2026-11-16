@@ -383,9 +383,10 @@
 <rect class="d" style="animation-delay:2.468s" x="812.0" y="149" width="12" height="12" rx="3" fill="#26a641"/>
 <rect class="d" style="animation-delay:2.486s" x="812.0" y="164" width="12" height="12" rx="3" fill="#26a641"/>
 <rect class="d" style="animation-delay:2.396s" x="827.0" y="74" width="12" height="12" rx="3" fill="#26a641"/>
-<g class="a" style="animation-delay:2.540s"><text x="47.0" y="213" font-size="20" font-weight="700" fill="#f0f6fc">1401</text><text x="47.0" y="230" fill="#8b949e">contributions, forks included</text></g>
-<g class="a" style="animation-delay:2.640s"><text x="275.3" y="213" font-size="20" font-weight="700" fill="#f0f6fc">80d</text><text x="275.3" y="230" fill="#8b949e">current streak</text></g>
-<g class="a" style="animation-delay:2.740s"><text x="403.1" y="213" font-size="20" font-weight="700" fill="#f0f6fc">80d</text><text x="403.1" y="230" fill="#8b949e">longest streak</text></g>
+<rect class="d" style="animation-delay:2.414s" x="827.0" y="89" width="12" height="12" rx="3" fill="#006d32"/>
+<g class="a" style="animation-delay:2.540s"><text x="47.0" y="213" font-size="20" font-weight="700" fill="#f0f6fc">1406</text><text x="47.0" y="230" fill="#8b949e">contributions, forks included</text></g>
+<g class="a" style="animation-delay:2.640s"><text x="275.3" y="213" font-size="20" font-weight="700" fill="#f0f6fc">81d</text><text x="275.3" y="230" fill="#8b949e">current streak</text></g>
+<g class="a" style="animation-delay:2.740s"><text x="403.1" y="213" font-size="20" font-weight="700" fill="#f0f6fc">81d</text><text x="403.1" y="230" fill="#8b949e">longest streak</text></g>
 <g class="a" style="animation-delay:2.840s"><text x="530.9" y="213" font-size="20" font-weight="700" fill="#f0f6fc">175</text><text x="530.9" y="230" fill="#8b949e">best day</text></g>
 <text x="723.0" y="229" text-anchor="end" fill="#8b949e">Less</text>
 <rect x="731.0" y="219" width="12" height="12" rx="3" fill="#161b22"/>
