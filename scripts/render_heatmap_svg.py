@@ -18,7 +18,7 @@ CELL = 12
 GAP = 3
 STEP = CELL + GAP
 LEFT = 46   # room for weekday labels
-TOP = 82    # room for the prompt and month labels
+TOP = 74    # room for the prompt and month labels
 
 
 def main():
@@ -38,11 +38,11 @@ def main():
 
     grid_w = len(weeks) * STEP - GAP
     x0 = LEFT + (W - LEFT - 20 - grid_w) / 2
-    h = TOP + 7 * STEP + 76
+    h = TOP + 7 * STEP + 72
 
-    out = [svg_open(h, size=11)] + pane(h, "contrib")
-    cmd, t = prompt(26, 44, "./contributions.sh")
-    out.append(cmd.replace("<text ", '<text font-size="13" ', 1))
+    out = [svg_open(h, size=11)] + pane(h)
+    cmd, t = prompt(26, 36, "./contributions.sh", cursor=True)
+    out.append(cmd)
 
     seen = None
     for wi, week in enumerate(weeks):

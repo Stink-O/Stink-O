@@ -1,7 +1,7 @@
 """Shared look for the profile SVGs: palette, pane frame, entrance animation.
 
-Every image is an 860px-wide tmux-style pane: a thin border with the pane
-name set into the top edge. Set STATIC=1 to drop all animation (for
+Every image is an 860px-wide tmux-style pane with a thin border that draws
+itself in. Set STATIC=1 to drop all animation (for
 rasterized previews).
 """
 import html
@@ -18,6 +18,7 @@ TITLE = "#f0f6fc"
 GOLD = "#e3b341"
 
 W = 860
+GAP = 12  # empty space under each image
 FONT = "ui-monospace,SFMono-Regular,Menlo,Consolas,'DejaVu Sans Mono',monospace"
 STATIC = os.environ.get("STATIC") == "1"
 
@@ -48,41 +49,41 @@ def anim(cls, delay=0.0):
 
 
 def svg_open(h, size=13, w=W):
+    """Open an SVG `h` px tall plus GAP px of empty space underneath, so the
+    stacked images are evenly spaced whatever the page does between them."""
     style = "" if STATIC else f"<style>{CSS}</style>"
     return (
-        f'<svg xmlns="http://www.w3.org/2000/svg" width="{w}" height="{h}" '
-        f'viewBox="0 0 {w} {h}" font-family="{FONT}" font-size="{size}">{style}'
+        f'<svg xmlns="http://www.w3.org/2000/svg" width="{w}" height="{h + GAP}" '
+        f'viewBox="0 0 {w} {h + GAP}" font-family="{FONT}" font-size="{size}">{style}'
     )
 
 
-def pane(h, label, w=W):
-    """Filled pane whose border draws itself in, with `label` set into a
-    gap in the top edge."""
-    x0, y0, x1, y1, r = 0.5, 8.5, w - 0.5, h - 0.5, 8
-    g0 = 18
-    g1 = g0 + len(label) * 7.3 + 16
+def pane(h, w=W):
+    """Filled pane whose border draws itself in."""
+    x0, y0, x1, y1, r = 0.5, 0.5, w - 0.5, h - 0.5, 8
     cls = "" if STATIC else ' class="b"'
     return [
         f'<rect x="{x0}" y="{y0}" width="{x1 - x0}" height="{y1 - y0}" rx="{r}" fill="{BG}"/>',
-        f'<path{cls} pathLength="1" fill="none" stroke="{BORDER}" d="M{g1:.1f} {y0}H{x1 - r}'
+        f'<path{cls} pathLength="1" fill="none" stroke="{BORDER}" d="M{x0 + r} {y0}H{x1 - r}'
         f'A{r} {r} 0 0 1 {x1} {y0 + r}V{y1 - r}A{r} {r} 0 0 1 {x1 - r} {y1}H{x0 + r}'
-        f'A{r} {r} 0 0 1 {x0} {y1 - r}V{y0 + r}A{r} {r} 0 0 1 {x0 + r} {y0}H{g0}"/>',
-        f'<text x="{g0 + 8}" y="{y0 + 4}" font-size="12" fill="{DIM}">{esc(label)}</text>',
+        f'A{r} {r} 0 0 1 {x0} {y1 - r}V{y0 + r}A{r} {r} 0 0 1 {x0 + r} {y0}Z"/>',
     ]
 
 
-def prompt(x, y, cmd, start=0.2):
-    """`stink-o@github ~ $ cmd`, typed one character at a time with a
-    blinking block cursor. Returns (svg, time the typing ends)."""
+def prompt(x, y, cmd, start=0.2, host=False, cursor=False):
+    """`$ cmd`, typed one character at a time. `host` adds the user@host
+    prefix and `cursor` a blinking block; each is used on one pane only.
+    Returns (svg, time the typing ends)."""
     chars = "".join(
         f'<tspan{anim("f", start + i * 0.07)} fill="{TITLE}">{esc(c)}</tspan>'
         for i, c in enumerate(cmd)
     )
     end = start + len(cmd) * 0.07
-    cursor = "" if STATIC else f'<tspan{anim("k", end)} fill="{KEY}"> █</tspan>'
+    who = f'<tspan fill="{KEY}">stink-o@github</tspan><tspan fill="{DIM}"> ~ </tspan>' if host else ""
+    block = f'<tspan{anim("k", end)} fill="{KEY}"> █</tspan>' if cursor and not STATIC else ""
     return (
-        f'<text x="{x}" y="{y}" xml:space="preserve"><tspan fill="{KEY}">stink-o@github</tspan>'
-        f'<tspan fill="{DIM}"> ~ $ </tspan>{chars}{cursor}</text>',
+        f'<text x="{x}" y="{y}" font-size="13" xml:space="preserve">{who}'
+        f'<tspan fill="{DIM}">$ </tspan>{chars}{block}</text>',
         end,
     )
 
