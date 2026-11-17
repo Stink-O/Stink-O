@@ -1,8 +1,8 @@
 {
- "fetched": "2026-11-16",
- "followers": 33,
+ "fetched": "2026-11-17",
+ "followers": 34,
  "public_repos": 16,
- "stars": 519,
+ "stars": 521,
  "repos": {
   "2D-Swirling-Vortex-Portal-shader---Godot-project": {
    "stars": 0,
@@ -50,8 +50,8 @@
    "language": "CSS"
   },
   "orbital-laser": {
-   "stars": 241,
-   "forks": 14,
+   "stars": 243,
+   "forks": 13,
    "language": "Rust"
   },
   "PathLab": {
